@@ -1,0 +1,691 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+label,
+img,
+li,
+ul,
+a {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: url('../img/bg.png');
+}
+
+/* Если активно всплывающее меню, блокируем скроллинг */
+body.popup-active {
+    overflow-y: hidden;
+}
+
+main {
+    width: 1220px;
+    margin: 0 auto;
+    display: flex;
+}
+
+/* Аватарка пользователя */
+
+#user-page_app .user-ava {
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 50px;
+    z-index: 3;
+    height: 280px;
+    width: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-btn-send-message,
+.user-btn-add-friend {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 165px;
+    height: 330px;
+    box-shadow: 0px 0px 4px rgba(138, 138, 138, 0.25);
+}
+
+.user-btn-send-message {
+    z-index: 2;
+    margin: 25px 0 0 25px;
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    background: #FAFAFA;
+}
+
+.user-btn-add-friend {
+    z-index: 1;
+    margin: 25px 0 0 190px;
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    background: #FFFFFF;
+}
+
+.user-btn-send-message>img {
+    margin-left: 3px;
+}
+
+.user-btn-add-friend>img {
+    margin: 0 3px 0 auto;
+}
+
+.user-btn-send-message:hover {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.user-btn-add-friend:hover {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+#user-page_app {
+    width: 920px;
+    height: auto;
+    background-color: white;
+}
+
+.user-ava_con .blackout-edit-ava {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin : 50px 0 0 50px;
+    background-color: black;
+    color: white;
+    opacity: 0;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    z-index: 4;
+    transition: .4s ease;
+}
+
+.user-ava_con .blackout-edit-ava:hover {
+    opacity: 0.5;
+    transition: .4s ease;
+}
+
+.blackout-edit-ava .blackout-edit-text:hover {
+    border-bottom: 1px dashed white;
+    transition: .2s ease;
+}
+
+.user-ava_con {
+    margin-right: 25px;
+    margin-bottom: 25px;
+    width: 330px;
+    height: 330px;
+}
+
+
+#user-page_app h1 {
+    width: 100%;
+    height: 42px;
+    margin-bottom: 25px;
+    font-family: Pacifico;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 42px;
+    color: #B60F46;
+}
+
+#user-page_app .online-status-text {
+    font-weight: 300;
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #181818;
+}
+
+/* Всплывающее окно загрузки новой аватарки */
+
+.popup-edit-ava_app {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.popup-edit-ava {
+    width: 630px;
+    height: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    color: #444;
+    padding: 30px 30px 60px 30px;
+}
+
+.popup-edit-ava_head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-error {
+    display: none;
+    border: 1px solid #B60F46;
+    color:#B60F46;
+    border-radius: 10px;
+    width: 100%;
+    min-height: 45px;
+    height: auto;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-error.active {
+    display: flex;
+} 
+
+.popup-error.success {
+    display: flex;
+    border: 1px solid #44C959;
+    color: #44C959;
+}
+
+.popup-edit-ava_head .popup-logo,
+.popup-edit-ava_head .popup-icon-close {
+    margin-left: auto;
+}
+
+.popup-edit-ava_head .popup-icon-close, 
+.popup-icon-close:hover {
+    transition: .4s ease;
+}
+
+.popup-edit-ava_head .popup-icon-close:hover {
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+input#avatar {
+    display: none;
+}
+
+.popup-edit-ava_app label.btn-upload {
+    font-family: 'Pacifico';
+    color: #B60F46;
+    padding: 6px 25px;
+    border: 1px solid #B60F46;
+    border-radius: 15px;
+    transition: .4s ease;
+}
+
+.popup-edit-ava_app label.btn-upload:hover {
+    color: white;
+    background-color: #B60F46;
+    border: none;
+    cursor: pointer;
+    transition: .4s ease;
+}
+
+.popup-form-ava {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.popup-form-ava .popup-ava-text {
+    margin-right: 15px;
+}
+
+.btn-save-edit-ava {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+    color: white;
+    background-color: #B60F46;
+    border: none;
+    padding: 8px 35px;
+    border-radius: 15px;
+    font-family: 'Pacifico';
+    cursor: pointer;
+}
+
+.popup-dropzone {
+    border: 2px dashed #000;
+    width: 640px;
+    height: 300px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.drag-enter {
+    border: 2px dashed #B60F46;
+}
+
+#dropzone .dropzone-img {
+    margin-bottom: 10px;
+}
+
+#dropzone .dropzone-text {
+    font-size: 18px;
+    line-height: 21px;
+}
+
+
+/* Статус на странице пользователя */
+
+.status {
+    display: flex;
+    cursor: pointer;
+    height: 35px;
+    align-items: baseline;
+}
+
+.status.not-you {
+    cursor: default;
+}
+
+.status .status-text {
+    padding: 7px 0 7px 10px;
+    margin-right: 10px;
+    width: 472px;
+    background: #FAFAFA;
+    border-radius: 10px;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.status .status-icon-edit, 
+.status-icon-close {
+    width: 15px;
+    height: 15px;
+    transition: .4s ease;
+}
+
+.status .status-icon-close:hover {
+    transform: rotate(180deg);
+    transition: 0.4s ease;
+}
+
+.status .status-icon-edit {
+    opacity: 0;
+}
+
+.status:hover .status-icon-edit {
+    opacity: 1;
+    transition: .4s ease;
+}
+
+/* Форма изменения статуса */
+
+.status .status-form-edit {
+    display: flex;
+    justify-content: space-between;
+    width: 480px;
+    height: 35px;
+    box-shadow: 0px 0px 4px rgba(138, 138, 138, 0.25);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.status-form-edit input.status-text-form {
+    width: 420px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+}
+
+.status .btn-status-save {
+    color: #B60F46;
+    font-size: 16px;
+    line-height: 19px;
+    outline: none;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: .4s ease;
+}
+
+.status .btn-status-save:hover {
+    color: white;
+    background-color: #B60F46;
+    transition: .4s ease;
+}
+
+.user-more-info .info-label {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    color: #515151;
+}
+
+.user-info_con {
+    margin-left: 25px;
+    padding-top: 10px;
+}
+
+.user-more-info {
+    margin-top: 20px;
+}
+
+#user-page_app .user-more-info ul {
+    margin: 5px 0 0 10px;
+    width: 215px;
+    height: 100%;
+}
+
+#user-page_app .user-more-info ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-more-info .info-text {
+    padding: 7px 7px 7px 10px;
+    margin-left: auto;
+    width: 89px;
+    background: #FAFAFA;
+    border-radius: 10px;
+}
+
+.user-page-body_con {
+    display: flex;
+}
+
+.user-page-body_con .user-info-name {
+    width: 482px;
+    margin-top: 44px;
+    display: flex;
+    align-items: center;
+    width: 472px;
+    height: 35px;
+}
+
+.user-page-body_con .dd .user-info-name .online-status-text {
+    text-align: right;
+}
+
+.user-info_con .user-info-name div.online-status,
+.user-info_con .user-info-name div.online-status.online {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.user-info_con .user-info-name div.online-status {
+    background-color: #D63737;
+}
+
+.user-info_con .user-info-name div.online-status.online {
+    background-color: #44C959;
+}
+
+.user-more-info {
+    display: flex;
+    align-items: center;
+}
+
+.personal-info {
+    display: flex;
+    width: 135px;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: space-between;
+    margin-left: 66px;
+}
+
+.personal-info p:first-child {
+    width: 43px;
+    height: 40px;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+    color: #181818;
+}
+
+.personal-info div:first-child:hover>img {
+    transform: scale(1.1);
+    transition: 0.2s ease;
+}
+
+.personal-info div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.personal-info a {
+    text-decoration: none;
+    color: #444444;
+    margin-bottom: 15px;
+}
+
+.personal-info-text {
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #B60F46;
+}
+
+/* Секция со всеми постами */
+
+section.posts div.my-posts {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Плашка опубликовать пост */
+
+section.posts {
+    min-height: 50%;
+    margin: 25px 0 0 30px;
+}
+
+.submit-post {
+    width: 810px;
+    height: 60px;
+    background-color: #fff;
+    box-shadow: 0px 0px 4px rgba(138, 138, 138, 0.25);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+    margin-bottom: 25px;
+}
+
+.submit-post .submit-post-ava {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px rgb(138 138 138 / 25%);
+}
+
+.form-post {
+    display: flex;
+    width: 740px;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+.form-attach-file {
+    width: 115px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-active {
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submit-post .txtarea-post {
+    border: none;
+    outline: none;
+    color: #444;
+    font-weight: 300;
+    font-size: 15px;
+    width: 70%;
+    height: 29px;
+    margin-left: 40px;
+    resize: none;
+    padding-top: 9px;
+}
+
+.submit-post .btn-public-post {
+    border: none;
+    outline: none;
+    background-color: white;
+    width: 65px;
+    height: 40px;
+    border-collapse: collapse;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .4s ease;
+    padding-left: 20px;
+}
+
+.btn-icon-airplane {
+    width: 20px;
+    height: 20px;
+    transition: .4s ease;
+}
+
+.submit-post .btn-public-post:hover .btn-icon-airplane {
+    width: 25px;
+    height: 25px;
+    transition: .4s ease;
+}
+
+/* Опубликованный пост */
+
+.post {
+    border-radius: 15px;
+    width: 810px;
+    box-shadow: 0px 0px 4px rgb(138 138 138 / 25%);
+    display: flex;
+    padding: 25px 0 20px 25px;
+    margin-bottom: 15px;
+}
+
+.post-container {
+    width: 685px;
+}
+
+.post .post-head {
+    width: 685px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.post .post-container .post-content p {
+    min-height: 15px;
+}
+
+.post .post-author-data {
+    display: flex;
+    align-items: center;
+}
+
+.post .post-author-data .post-author {
+    margin-right: 10px;
+}
+
+.post .post-author a {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #B60F46;
+    text-decoration: none;
+}
+
+.post .post-data {
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 12px;
+    color: #444;
+}
+
+.post .edit-post {
+    display: flex;
+    width: 85px;
+    justify-content: space-between;
+}
+
+.post .edit-post.not-you {
+    justify-content: flex-end;
+}
+
+.post .edit-post .close,
+.post .edit-post .close:hover {
+    transition: .4s ease;
+}
+
+.post .edit-post .close:hover {
+    transform: rotate(180deg);
+}
+
+.post .post-actions {
+    display: flex;
+    width: 685px;
+    justify-content: space-between;
+}
+
+.post .post-actions .action {
+    display: flex;
+    max-width: 65px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post .post-actions .action img {
+    margin-right: 5px;
+}
+
+.post .post-ava {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-right: 25px;
+    object-fit: cover;
+}
+
+.post .edit-post .kebab {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 18px;
+}
+
+.post .edit-post .kebab .circle {
+    width: 4px;
+    height: 4px;
+    background-color: black;
+    border-radius: 50%;
+}

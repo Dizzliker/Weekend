@@ -1,0 +1,153 @@
+body,
+label,
+p,
+h1,
+a {
+    margin: 0;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+input:focus {
+    border-color: #777777;
+}
+
+.login-con {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background: url(../img/bg.jpg) no-repeat;
+    background-size: auto auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+form fieldset a {
+    margin-bottom: 30px;
+}
+
+div.log-con {
+    margin: 15% auto;
+    width: 331px;
+    position: absolute;
+    top: 0;
+    height: auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+}
+
+.log-error,
+.reg-error {
+    display: none;
+    border: 1px solid #B60F46;
+    color:#B60F46;
+    border-radius: 10px;
+    width: 250px;
+    min-height: 45px;
+    height: auto;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    width: 250px;
+    height: 45px;
+    margin: 0 auto;
+    padding-left: 15px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 15px;
+    outline: none;
+}
+
+.empty, .emptyDate {
+    border: 1px solid #B60F46;
+}
+
+.emptyDate {
+    color: #B60F46;
+}
+
+.empty::-webkit-input-placeholder {
+    color: #B60F46;
+}
+
+.empty::-moz-placeholder {
+    color: #B60F46;
+}
+
+fieldset.log-field input:nth-child(2) {
+    margin-bottom: 20px;
+}
+
+fieldset.log-field input:nth-child(3) {
+    margin-bottom: 30px;
+}
+
+img {
+    margin: 30px auto;
+}
+
+button {
+    width: 251px;
+    height: 44px;
+    border: none;
+    margin: 18px auto;
+    font-family: Pacifico;
+    font-size: 18px;
+    line-height: 32px;
+    color: #FFFFFF;
+    background: #B60F46;
+    border-radius: 15px;
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+a {
+    font-size: 12px;
+    line-height: 14px;
+    color: #3D3AD4;
+}
+
+/* Форма регистрации в signIn.php */
+
+div.reg-con {
+    margin: 9% auto;
+    position: absolute;
+    top: 0;
+    width: 331px;
+    height: auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+}
+
+fieldset.reg-field input:nth-child(2),
+input:nth-child(3),
+input:nth-child(4),
+input:nth-child(5) {
+    margin-bottom: 20px;
+}
+
+fieldset.reg-field input:nth-child(6) {
+    margin-bottom: 30px;
+}
